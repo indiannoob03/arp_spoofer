@@ -9,7 +9,7 @@ import subprocess
 # Enabling port forwarding so that the target still has an active internet connection
 def e_port_forwarding():
     print("Enabling Port Forwarding ... ")
-    subprocess.call(["echo", "1", ">", "/proc/sys/net/ipv4/ip_forward"])
+    subprocess.call("echo 1 > /proc/sys/net/ipv4/ip_forward", shell = True)
 
 # This function gets the argument from the command line and also builds the help menu.
 def get_arguments():
@@ -63,3 +63,4 @@ except(KeyboardInterrupt):
     print("Restoring ARP ...... \n")
     restore(options.spoof_ip, options.target_ip)
     restore(options.target_ip, options.spoof_ip)
+
